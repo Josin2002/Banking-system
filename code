@@ -1,0 +1,86 @@
+accounts = {
+    'josin':{'password':'123456','balance':1000},
+    'antony':{'password':'123456','balance':500},
+    'ligi':{'password':'123456','balance':2000},
+    'ashly':{'password':'123456','balance':3000},
+    'joseph':{'password':'123456','balance':800},
+            }
+def create_account():
+    username = input("enter a username: ")
+    password = input("enter a password")
+    accounts[username] = {'password':password,'balance':0}
+    print("account created succesfully.")
+
+def login():
+    username = input("enter your username: ")
+    password = input("enter your password: ")
+    if username in accounts and accounts[username] ['password'] == password:
+        print("login succesful.")
+        return username
+    else:
+        print("invalid username or password.")
+        return None
+
+def deposit(username):
+    amount = float(input("enter the amount to deposit: "))
+    if amount > 0:
+        accounts [[username] ['balance'] += amount
+        print("deposit succesfull.your new balance is: ",accounts[username]['balance'])
+    else:
+        print("invalid amount.please enter a positive value.")
+
+def withdraw(username):
+    amount = float(input("enter the amount to withdraw: "))
+    if amount > 0 and amount <= accounts[username] ['balance']:
+        accounts [username] ['balance'] -= amount
+        print("withdrawal succesfull. your new balance is ",accounts[username]['balance'])
+    else:
+        print("invalid amount or insufficient balance.")
+
+while True:
+    print("\nBanking System")
+    print("1.create account")
+    print("2.login")
+    print("3.deposit")
+    print("4.withdraw")
+    print("5.exit")
+choice = input("enter your choice: ")
+    if choice == '1':
+        create_account()
+    elif choice == '2':
+        logged_in_user = login()
+        if logged_in_user:
+            while True:
+                print("\nwelcome," + logged_in_user + "!")
+                print("1.deposit")
+                print("2.withdraw")
+                print("3.logout")
+                inner_choice = input("enter your choice: ")
+
+                if inner_choice == '1':
+                    deposit(logged_in_user)
+                elif inner_choice == '2':
+                    withdraw(logged_in_user)
+                elif inner_choice =='3':
+                    break
+                else:
+                    print("invalid choice.")
+
+
+        elif choice == '3':
+            print("please log in to make a deposit. ")
+        elif choice == '4':
+            print("please log in to make a withdrawal. ")
+        elif choice == '5':
+            break
+        else:
+            print("invalid choice.please try again.")
+
+
+
+
+
+
+
+
+
